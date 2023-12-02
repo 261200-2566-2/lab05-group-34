@@ -1,5 +1,6 @@
 package Charaters;
 
+import Accessories.Ring.Ring;
 import Accessories.Shoe.Shoes;
 import Weapon.Sword;
 import Weapon.Shield;
@@ -9,6 +10,7 @@ public class Fighter {
     protected int lvl = 1;
     protected double maxHP = 100;
     protected double currentHP;
+    protected double currentatk;
     protected double maxMana = 50;
     protected double currentMana;
     protected double baseSpeed = 20;
@@ -16,11 +18,10 @@ public class Fighter {
     public Sword equipSword;
     public Shield equipShield;
     public Shoes equipShoes;
+    public Ring equipRing;
 
-    public Fighter(String name, Sword sword, Shield shield){
+    public Fighter(String name){
         this.name = name;
-        this.equipSword = sword;
-        this.equipShield = shield;
         initializeStats();
     }
     public void initializeStats(){
@@ -30,6 +31,7 @@ public class Fighter {
         currentHP = maxHP;
         currentMana = maxMana;
         currentSpeed = baseSpeed;
+        currentatk = 0;
         updateStats();
     }
     public void takeDMG(int damage){
@@ -48,9 +50,33 @@ public class Fighter {
     }
     public void setEquipShield(Shield newShield){
         equipShield = newShield;
+        updateStats();
+    }
+    public void setEquipShoes(Shoes newShoes){
+        equipShoes = newShoes;
+        updateStats();
+    }
+    public void  setEquipRing(Ring newRing){
+        equipRing = newRing;
+        updateStats();
     }
     public void updateStats(){
-        currentSpeed = baseSpeed - equipSword.SpeedDecrease() - equipShield.SpeedDecrease();
+        currentSpeed = baseSpeed;
+        currentatk = 0;
+        if (equipShoes != null){
+            currentSpeed += equipShoes.Speed();
+            currentatk += equipShoes.atkShoe();
+        }
+        if (equipShield != null){
+            currentSpeed -= equipShield.SpeedDecrease();
+        }
+        if (equipSword != null){
+            currentSpeed -= equipSword.SpeedDecrease();
+            currentatk += equipSword.swordDMG;
+        }
+        if (equipRing != null){
+            currentatk += equipRing.atkring();
+        }
     }
     public double getMaxHP(){
         return maxHP;
@@ -66,6 +92,9 @@ public class Fighter {
     }
     public double getCurrentSpeed(){
         return currentSpeed;
+    }
+    public double getCurrentatk(){
+        return currentatk;
     }
 }
 

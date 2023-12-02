@@ -2,13 +2,19 @@ package Charaters;
 import Weapon.Sword;
 import Weapon.Shield;
 public class Thief extends Fighter {
-    public Thief(String name, Sword sword, Shield shield){
-        super(name , sword, shield);
+    public Thief(String name){
+        super(name);
     }
     @Override
     public void initializeStats(){
         maxHP = 80 + 10*lvl;
         baseSpeed = 15 + 3*lvl;
+        maxMana = 50 + 2*lvl;
+        currentHP = maxHP;
+        currentMana = maxMana;
+        currentSpeed = baseSpeed;
+        currentatk = 0;
+        updateStats();
     }
     @Override
     public void setEquipShield(Shield newShield){
