@@ -1,5 +1,4 @@
 package Charaters;
-import Weapon.Sword;
 import Weapon.Shield;
 public class Thief extends Fighter {
     public Thief(String name){
