@@ -31,6 +31,9 @@ public class Main {
         System.out.println("\nThief without Equipment stats:");
         Thief lupang = new Thief("lupang");
         displayCharacterStats(lupang);
+        lupang.setEquipShield(HeavyShield);
+        displayCharacterStats(lupang);
+
         System.out.println("\nEquipped ring and  atk shoes:");
         Knack.setEquipShoes(AShoe);
         Knack.setEquipRing(HolyRing);
