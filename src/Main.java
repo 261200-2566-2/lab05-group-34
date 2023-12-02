@@ -1,3 +1,4 @@
+import Accessories.Ring.AtkRing;
 import Accessories.Ring.Ring;
 import Accessories.Shoe.ATKShoe;
 import Accessories.Shoe.Shoes;
@@ -13,7 +14,7 @@ public class Main {
         // Create a sword and a shield
         Sword LongSword = new Sword(100);
         Shield HeavyShield = new Shield(50);
-        Ring HolyRing = new Ring(20);
+        Ring HolyRing = new AtkRing(20);
 //        ATKShoe is increase SwordDMG;
         Shoes AShoe = new ATKShoe(10 , 10);
 //        SpeedShoe
